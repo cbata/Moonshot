@@ -27,11 +27,21 @@ struct MissionView: View {
                         .padding(.top)
 
                     VStack(alignment: .leading) {
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundColor(.lightBackground)
+                            .padding(.vertical)
+
                         Text("Mission Highlights")
                             .font(.title.bold())
                             .padding(.bottom, 5)
 
                         Text(mission.description)
+
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundColor(.lightBackground)
+                            .padding(.vertical)
                     }
                     .padding(.horizontal)
 
@@ -45,12 +55,24 @@ struct MissionView: View {
                                         Image(crewMember.astronaut.id)
                                             .resizable()
                                             .frame(width: 104, height: 72)
-                                            .clipShape(Capsule())
-                                            .overlay {
-                                                Capsule()
+                                            .clipShape(
+                                                RoundedRectangle(cornerRadius: 5)
+                                            )
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 5)
                                                     .strokeBorder(.white, lineWidth: 1)
-                                            }
+                                            )
+
+                                        VStack(alignment: .leading) {
+                                            Text(crewMember.astronaut.name)
+                                                .foregroundColor(.white)
+                                                .font(.headline)
+
+                                            Text(crewMember.role)
+                                                .foregroundColor(.secondary)
+                                        }
                                     }
+                                    .padding(.horizontal)
                                 }
                             }
                         }
